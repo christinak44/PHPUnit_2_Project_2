@@ -1,6 +1,6 @@
 <?php
-//Quiz summary page provides final score and option to play again
 session_start();
+//Quiz summary page provides final score and option to play again
 $selection1 = htmlspecialchars($_SESSION['selection'][1]);
 $selection2 = htmlspecialchars($_SESSION['selection'][2]);
 $selection3 = htmlspecialchars($_SESSION['selection'][3]);
@@ -15,7 +15,7 @@ $selection10 = htmlspecialchars($_SESSION['selection'][10]);
 
 if(isset($_SESSION['selection'][10])){
 
-echo "<h1> Final Score: " . $_SESSION['score'] . " out of 10</h1>";
+echo "<h1> Final Score: " . ++$_SESSION['score'] . " out of 10</h1>";
 
 if($_SESSION['score']>= 7){
 

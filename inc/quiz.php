@@ -1,7 +1,6 @@
 <?php
-// quiz session creator
 session_start();
-
+// quiz session creator
 include 'inc/question_set.php';
 
 $total = 10;
@@ -20,9 +19,11 @@ if(isset($_POST['selection'])){
 }
 if (isset($_POST['correct'])) {
         $_SESSION['correct'] = filter_input(INPUT_POST, 'correct', FILTER_SANITIZE_NUMBER_INT);
+
 }
 
 if($question > $total){
+
    header('location: inc/complete.php');
    exit;
 
@@ -39,12 +40,12 @@ echo "<input type='submit' class='btn' name='selection' value=' " . $answer_choi
 echo "<input type='submit' class='btn' name='selection' value=' " . $answer_choice[1] . "'>";
 echo "<input type='submit' class='btn' name='selection' value=' " . $answer_choice[2] . "'>";
 echo "<input type='hidden' name='correct' value='" . $correct_answer . "'>";
-//answer validation with toast 
-if ($_SESSION['selection'][$question-1] == $_SESSION['correct'] AND isset($_POST['selection'])){
+//answer validation with toast
+  if ($_SESSION['selection'][$question-1] == $_SESSION['correct'] AND isset($_POST['selection'])){
   $toast = ["Right!", "You Got It!", "Keep It Up!"];
   shuffle($toast);
   echo "<p class='breadcrumbs'>" . implode(array_slice($toast, 2)) . "</p>";
-  $_SESSION['score'] += 1;
+  ++$_SESSION['score'];
 
 } elseif ($_SESSION['selection'][$question-1] != $_SESSION['correct'] AND isset($_POST['selection'])){
   $toastIncorrect = ["Darn!", "Maybe Next Time!", "Sorry!"];
