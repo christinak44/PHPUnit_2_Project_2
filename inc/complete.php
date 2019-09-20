@@ -1,4 +1,5 @@
 <?php
+//Quiz summary page provides final score and option to play again
 session_start();
 $selection1 = htmlspecialchars($_SESSION['selection'][1]);
 $selection2 = htmlspecialchars($_SESSION['selection'][2]);

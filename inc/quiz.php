@@ -1,4 +1,5 @@
 <?php
+// quiz session creator
 session_start();
 
 include 'inc/question_set.php';
@@ -11,7 +12,7 @@ if (empty ($question)){
   $score = 0;
   $question = 1;
 }
-
+//tracks answers upon submission
 if(isset($_POST['selection'])){
    $_SESSION['selection'][$question-1] = filter_input(INPUT_POST, 'selection', FILTER_SANITIZE_STRING);
 
@@ -27,7 +28,7 @@ if($question > $total){
 
 }
 
-
+//site interaction code
 shuffle($answer_choice);
 echo "<p class='breadcrumbs'>Question " . $question . " of " . $total . "</p>";
 
@@ -38,7 +39,7 @@ echo "<input type='submit' class='btn' name='selection' value=' " . $answer_choi
 echo "<input type='submit' class='btn' name='selection' value=' " . $answer_choice[1] . "'>";
 echo "<input type='submit' class='btn' name='selection' value=' " . $answer_choice[2] . "'>";
 echo "<input type='hidden' name='correct' value='" . $correct_answer . "'>";
-
+//answer validation with toast 
 if ($_SESSION['selection'][$question-1] == $_SESSION['correct'] AND isset($_POST['selection'])){
   $toast = ["Right!", "You Got It!", "Keep It Up!"];
   shuffle($toast);

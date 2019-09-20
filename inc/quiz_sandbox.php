@@ -1,5 +1,5 @@
 <?php
-
+//used to test ideas
 if (empty($page)) {
     session_destroy();
     $page = 1;

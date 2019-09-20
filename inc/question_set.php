@@ -2,6 +2,7 @@
 
 
 <?php
+// addition problems randomly created via rand function then assigned to array
 $a = rand(0,10);
 $b = rand(1,10);
 
@@ -10,7 +11,7 @@ $incorrect_1 = $correct_answer + rand(1,10);
 $incorrect_2 = $correct_answer - rand(1,10);
 
 $answer_choice = [$correct_answer, $incorrect_1, $incorrect_2];
-
+// additional question genrators to increase skill/challenge level
 $c = rand(0,50);
 $d = rand(1,50);
 

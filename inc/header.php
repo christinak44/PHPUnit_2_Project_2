@@ -1,3 +1,4 @@
+<!--Header page to breakup background/ visual appeal-->
   <head>
  <link rel="stylesheet" href="css/styles.css">
 
