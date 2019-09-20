@@ -1,6 +1,8 @@
 
-<?php include 'inc/quiz.php';?>
-<?php include 'inc/complete.php'; ?>
+<?php
+include 'inc/header.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@
 <body>
     <div class="container">
         <div id="quiz-box">
-
+      <?php include ("inc/quiz.php");?>
 
      </div>
 

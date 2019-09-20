@@ -1,7 +1,8 @@
 <?php
 session_start();
+
 include 'inc/question_set.php';
-include 'inc/header.php';
+
 $total = 10;
 $question = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_NUMBER_INT);
 if (empty ($question)){
@@ -23,16 +24,13 @@ if (isset($_POST['correct'])) {
 if($question > $total){
    header('location: inc/complete.php');
    exit;
+
 }
-
-		<div class="container">
-
-			<div id="quiz-box">
-
 
 
 shuffle($answer_choice);
 echo "<p class='breadcrumbs'>Question " . $question . " of " . $total . "</p>";
+
 echo '<form method = "post" action="index.php?p='. ($question+1) . '" />';
 //echo "<input type='hidden' name='begin' value='0' />";
 echo "<p class='quiz'> Solve " . $a . "+" . $b . "= </p>";
@@ -52,8 +50,3 @@ if ($_SESSION['selection'][$question-1] == $_SESSION['correct'] AND isset($_POST
   shuffle($toastIncorrect);
   echo "<p class='breadcrumbs'>" . implode(array_slice($toastIncorrect, 2)) . "</p>";
    }
-
-   </div>
-
- </div>
-//$select[] = ($x, $y, $z);
