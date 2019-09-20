@@ -1,5 +1,13 @@
 /* Random Quote Generator Styles */
 
+.header {
+padding: 40px;
+text-align: center;
+background: #107BE1;
+color: white;
+font-size: 20px;
+}
+
 body {
   font-family: 'Playfair Display', serif;
 }
@@ -67,4 +75,16 @@ body {
 
 .btn:focus {
   outline: none;
+}
+
+#progressBar {
+  width: 6em;
+  height: 4em;
+  border: 0.3em solid #062361;
+}
+
+#progressBarFull {
+  height: 3.4em;
+  background-color: #062361;
+  width: 0%;
 }

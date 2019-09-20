@@ -1,33 +1,59 @@
 <?php
-/*
- * PHP Techdegree Project 2: Build a Quiz App in PHP
- *
- * These comments are to help you get started.
- * You may split the file and move the comments around as needed.
- *
- * You will find examples of formating in the index.php script.
- * Make sure you update the index file to use this PHP script, and persist the users answers.
- *
- * For the questions, you may use:
- *  1. PHP array of questions
- *  2. json formated questions
- *  3. auto generate questions
- *
- */
+session_start();
+include 'inc/question_set.php';
+include 'inc/header.php';
+$total = 10;
+$question = filter_input(INPUT_GET, 'p', FILTER_SANITIZE_NUMBER_INT);
+if (empty ($question)){
 
-// Include questions
+  session_destroy();
+  $score = 0;
+  $question = 1;
+}
 
-// Keep track of which questions have been asked
-
-// Show which question they are on
-// Show random question
-// Shuffle answer buttons
+if(isset($_POST['selection'])){
+   $_SESSION['selection'][$question-1] = filter_input(INPUT_POST, 'selection', FILTER_SANITIZE_STRING);
 
 
-// Toast correct and incorrect answers
-// Keep track of answers
-// If all questions have been asked, give option to show score
-// else give option to move to next question
+}
+if (isset($_POST['correct'])) {
+        $_SESSION['correct'] = filter_input(INPUT_POST, 'correct', FILTER_SANITIZE_NUMBER_INT);
+}
+
+if($question > $total){
+   header('location: inc/complete.php');
+   exit;
+}
+
+		<div class="container">
+
+			<div id="quiz-box">
 
 
-// Show score
+
+shuffle($answer_choice);
+echo "<p class='breadcrumbs'>Question " . $question . " of " . $total . "</p>";
+echo '<form method = "post" action="index.php?p='. ($question+1) . '" />';
+//echo "<input type='hidden' name='begin' value='0' />";
+echo "<p class='quiz'> Solve " . $a . "+" . $b . "= </p>";
+echo "<input type='submit' class='btn' name='selection' value=' " . $answer_choice[0] . "'>";
+echo "<input type='submit' class='btn' name='selection' value=' " . $answer_choice[1] . "'>";
+echo "<input type='submit' class='btn' name='selection' value=' " . $answer_choice[2] . "'>";
+echo "<input type='hidden' name='correct' value='" . $correct_answer . "'>";
+
+if ($_SESSION['selection'][$question-1] == $_SESSION['correct'] AND isset($_POST['selection'])){
+  $toast = ["Right!", "You Got It!", "Keep It Up!"];
+  shuffle($toast);
+  echo "<p class='breadcrumbs'>" . implode(array_slice($toast, 2)) . "</p>";
+  $_SESSION['score'] += 1;
+
+} elseif ($_SESSION['selection'][$question-1] != $_SESSION['correct'] AND isset($_POST['selection'])){
+  $toastIncorrect = ["Darn!", "Maybe Next Time!", "Sorry!"];
+  shuffle($toastIncorrect);
+  echo "<p class='breadcrumbs'>" . implode(array_slice($toastIncorrect, 2)) . "</p>";
+   }
+
+   </div>
+
+ </div>
+//$select[] = ($x, $y, $z);
