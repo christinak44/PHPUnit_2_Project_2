@@ -16,16 +16,16 @@ $c = rand(0,50);
 $d = rand(1,50);
 
 $correct_answer1 = $c + $d;
-$incorrect_3 = $correct_answer + rand(1,10);
-$incorrect_4 = $correct_answer - rand(1,10);
+$incorrect_3 = $correct_answer1 + rand(1,10);
+$incorrect_4 = $correct_answer1 - rand(1,10);
 
 $answer_choice1 = [$correct_answer1, $incorrect_3, $incorrect_4];
 $e = rand(-10,50);
 $f = rand(1,100);
 
 $correct_answer2 = $e + $f;
-$incorrect_5 = $correct_answer + rand(1,10);
-$incorrect_6 = $correct_answer - rand(1,10);
+$incorrect_5 = $correct_answer2 + (rand(1,10));
+$incorrect_6 = $correct_answer2 - (rand(1,10));
 
 $answer_choice2 = [$correct_answer2, $incorrect_5, $incorrect_6];
 
